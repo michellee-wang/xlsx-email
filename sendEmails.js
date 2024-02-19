@@ -7,13 +7,13 @@ async function sendEmail(recipient, body) {
     let transporter = nodemailer.createTransport({
         service: 'gmail', // use your email service
         auth: {
-            user: 'a@gmail.com', // your email
-            pass: 'your-password' // your email password
+            user: 'from@gmail.com', // your email
+            pass: 'password' // your email password
         }
     });
 
     let mailOptions = {
-        from: 'a@gmail.com',
+        from: 'from@gmail.com',
         to: recipient, 
         subject: subject, 
         text: body, 
@@ -31,9 +31,8 @@ function processSpreadsheet(filePath) {
     const workbook = xlsx.readFile(filePath);
     const sheetName = workbook.SheetNames[0];
     const sheet = workbook.Sheets[sheetName];
-    const data = xlsx.utils.sheet_to_json(sheet, {header:1}); // Skip header row
+    const data = xlsx.utils.sheet_to_json(sheet, {header:1}); 
 
-    // Skip the first row (headers) and start from the second row
     for (let i = 1; i < data.length; i++) {
         let row = data[i];
         sendEmail(row[1], row[2]);
@@ -41,4 +40,4 @@ function processSpreadsheet(filePath) {
 }
 
 // Replace with the path to your spreadsheet
-processSpreadsheet('spreadsheet.xlsx');
+processSpreadsheet('DaysOfService.xlsx');
