@@ -13,7 +13,7 @@ async function sendEmail(recipient, body) {
     });
 
     let mailOptions = {
-        from: 'from@gmail.com',
+        from: 'from@gmail.com',  // use your email service
         to: recipient, 
         subject: subject, 
         text: body, 
