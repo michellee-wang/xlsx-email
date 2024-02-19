@@ -1,21 +1,22 @@
 const xlsx = require('xlsx');
 const nodemailer = require('nodemailer');
 
-// Function to send email
-async function sendEmail(recipient, subject, body) {
+async function sendEmail(recipient, body) {
+    const subject = 'Special Invitation: Dinner with Hack Club @ Coletta';
+
     let transporter = nodemailer.createTransport({
         service: 'gmail', // use your email service
         auth: {
-            user: 'your-email@gmail.com', // your email
+            user: 'a@gmail.com', // your email
             pass: 'your-password' // your email password
         }
     });
 
     let mailOptions = {
-        from: 'your-email@gmail.com', // sender address
-        to: recipient, // list of receivers
-        subject: subject, // Subject line
-        text: body, // plain text body
+        from: 'a@gmail.com',
+        to: recipient, 
+        subject: subject, 
+        text: body, 
     };
 
     try {
@@ -26,18 +27,18 @@ async function sendEmail(recipient, subject, body) {
     }
 }
 
-// Function to read spreadsheet and send emails
 function processSpreadsheet(filePath) {
     const workbook = xlsx.readFile(filePath);
     const sheetName = workbook.SheetNames[0];
     const sheet = workbook.Sheets[sheetName];
-    const data = xlsx.utils.sheet_to_json(sheet);
+    const data = xlsx.utils.sheet_to_json(sheet, {header:1}); // Skip header row
 
-    data.forEach(row => {
-        // Assuming the spreadsheet has 'Email', 'Subject', and 'Body' columns
-        sendEmail(row.Email, row.Subject, row.Body);
-    });
+    // Skip the first row (headers) and start from the second row
+    for (let i = 1; i < data.length; i++) {
+        let row = data[i];
+        sendEmail(row[1], row[2]);
+    }
 }
 
 // Replace with the path to your spreadsheet
-processSpreadsheet('path/to/your/spreadsheet.xlsx');
+processSpreadsheet('spreadsheet.xlsx');
