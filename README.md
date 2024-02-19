@@ -13,6 +13,7 @@ just input your email eg: michellewang857@gmail.com
 The code neglects the first row as a header.
 The spreadsheet should be formated like 
 <img width="369" alt="chrome_6cxkXI1EFI" src="https://github.com/michelle12349502039/xlsx-email/assets/74428837/f07aaf04-d736-4977-bf61-f14cd7affdf0">
+
 and saved as an xlsx file with the name `DaysOfService`
 
 **subject**
