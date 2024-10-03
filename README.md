@@ -8,7 +8,7 @@ generate an application-specific password (to bypass google 2fa)
 4. Create an app password (should look like `sjdk ajig aasl safo`)
 
 ## **user + from**
-just input your email eg: michellewang857@gmail.com
+just input your email eg: A@gmail.com
 
 ## **xlsx file format**
 The code neglects the first row as a header.
