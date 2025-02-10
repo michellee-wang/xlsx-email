@@ -1,6 +1,5 @@
-# Days of Service Outreach Emailer
+days of Service Outreach Emailer
 
-## **pass** 
 generate an application-specific password (to bypass google 2fa)
 1. go to your Google Account settings
 2. navigate to the security section
@@ -17,5 +16,4 @@ The spreadsheet should be formated like
 
 and saved as an xlsx file with the name `DaysOfService`
 
-## **subject**
-I assumed that subject was constant for every single email so there is no column for that in the spreadsheet. 
+subjects remain constant
